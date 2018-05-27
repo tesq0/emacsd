@@ -390,7 +390,8 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
 (my-move-key evil-motion-state-map evil-normal-state-map " ")
 
 ;; Magit integration
-(add-hook 'magit-mode-hook 'turn-off-evil-snipe-override-mode)
+;; not working on android
+;; (add-hook 'magit-mode-hook 'turn-off-evil-snipe-override-mode)
 
 
 (provide 'mikus-evil)

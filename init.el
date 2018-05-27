@@ -16,10 +16,12 @@
 (setq coding-system-for-write 'utf-8)                   ; use utf-8 by default for writing
 (setq initial-major-mode 'evil-mode)                 ; set the mode of the initial scratch buffer
 (setq initial-scratch-message "")                             ; print nothing and leave screen at insert mode
+(if window-system
+(progn 
 (menu-bar-mode -1)                        ; deactivate the menubar
 (tool-bar-mode -1)                        ; deactivate the toolbar
 (scroll-bar-mode -1)                        ; deactivate the scrollbar
-(tooltip-mode -1)                       ; deactivate the tooltip
+(tooltip-mode -1)))                       ; deactivate the tooltip
 (defun display-startup-echo-area-message () (message "Good morning, Logic is always number 1"))     ; change the default startup echo message
 (setq-default truncate-lines t)                     ; always truncate lines ;hello
 (setq large-file-warning-threshold (* 15 1024 1024))                ; increase theshold for larger files
@@ -314,13 +316,17 @@
 	:ensure t
 	)
 
-(use-package smooth-scroll
-	:ensure t
-	:config
-	(smooth-scroll-mode)
-	)
+;; (use-package smooth-scroll
+;; 	:ensure t
+;; 	:config
+;; 	(smooth-scroll-mode)
+;; 	)
 
 ;; jump to definition
+
+ (setq ls-lisp-use-insert-directory-program nil) 
+ (require 'ls-lisp)
+
 
 (use-package ag
 	:ensure t )
@@ -350,7 +356,13 @@
 
 
 ;; colortheme
-;;(load-theme 'dracula t)
+
+
+
+
+
+(require 'dracula-theme)
+;;(load-theme 'dracu
 
 (if (daemonp)
 		(add-hook 'after-make-frame-functions
@@ -502,7 +514,7 @@ buffer is not visiting a file."
 ;;	(define-key origami-prefix (kbd "a") 'origami-prefix-all)
 ;;	(define-key origami-prefix-all (kbd "o") 'origami-open-all-nodes)
 ;;	(define-key origami-prefix-all (kbd "c") 'origami-close-all-nodes)
-;;	(define-key origami-prefix-all (kbd "t") 'origami-toggle-all-nodes)
+;;	(define-key origami-prefix/-all (kbd "t") 'origami-toggle-all-nodes)
 
 ;;	)
 
